@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from '../../redux/contacts/contacts-selectors';
 import Notiflix, { Notify } from 'notiflix';
-import { addContact } from 'redux/thunk';
+import { addContact } from '../../redux/contacts/contactsThunks';
 import {
   StyledFomrLabel,
   StyledForm,

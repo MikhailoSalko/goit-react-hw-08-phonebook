@@ -1,46 +1,20 @@
-import ContactForm from './ContactForm/ContactForm.jsx';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/thunk';
-import Loader from './Loader/Loader';
-import {
-  StyledHeader,
-  StyledPhoneBookContainer,
-  StyledSectionContainer,
-  StyledTextNoContacts,
-} from './StyledApp';
-import { Report } from 'notiflix';
+import HomePage from 'pages/HomePage/HomePage';
+import Layout from 'pages/Layout/Layout';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import { Routes, Route } from 'react-router-dom';
+import ContactsPage from 'pages/ContactsPage/ContactsPage';
 
 function App() {
-  const {
-    contacts: { contacts, loading, error },
-  } = useSelector(state => state);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
-    <StyledPhoneBookContainer>
-      <StyledSectionContainer>
-        <StyledHeader>PhoneBook</StyledHeader>
-        <ContactForm />
-        <StyledHeader>Contacts</StyledHeader>
-        <Filter />
-      </StyledSectionContainer>
-      {error && Report.failure(error)}
-      {loading && contacts.length === 0 ? (
-        <Loader />
-      ) : contacts.length === 0 && !error ? (
-        <StyledTextNoContacts>
-          There are no contacts in your phonebook
-        </StyledTextNoContacts>
-      ) : (
-        <ContactList />
-      )}
-    </StyledPhoneBookContainer>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+      </Route>
+    </Routes>
   );
 }
 
