@@ -9,9 +9,10 @@ import { StyledList } from './StyledContactList';
 const ContactList = () => {
   const { error } = useSelector(state => state.contacts);
   // const contacts = useSelector(selectContacts);
+
+  const contacts = useSelector(selectFilteredContacts);
   console.log(error);
   console.log(contacts);
-  const contacts = useSelector(selectFilteredContacts);
   return (
     <>
       {contacts.length === 0 && !error ? (
