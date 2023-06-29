@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import ContactItem from './ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import {
-  selectContacts,
-  // selectFilteredContacts,
+  selectFilteredContacts,
 } from 'redux/contacts/contacts-selectors';
 import { StyledList } from './StyledContactList';
 
