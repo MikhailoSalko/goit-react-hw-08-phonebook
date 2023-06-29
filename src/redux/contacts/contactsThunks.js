@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import instance, { setToken } from 'api/authApi';
+import instance from 'api/authApi';
 
 const BASE_URL = 'https://648987a55fa58521caafc3ac.mockapi.io/api/contacts';
 
