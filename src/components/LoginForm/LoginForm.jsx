@@ -1,11 +1,10 @@
 import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/auth/authThunks';
 import { useNavigate } from 'react-router-dom';
+import { login } from 'redux/auth/authThunks';
 
-const RegisterForm = () => {
-  const [name, setName] = useState('');
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,34 +12,21 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleInputChange = ({ target }) => {
-    target.name === 'name'
-      ? setName(target.value)
-      : target.name === 'email'
+    target.name === 'email'
       ? setEmail(target.value)
       : setPassword(target.value);
   };
 
-  const handleSubmitForm = e => {
+  const handleLoginForm = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }))
+    dispatch(login({ email, password }))
       .unwrap()
       .then(() => navigate('/contacts'));
     e.target.reset();
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <TextField
-        onChange={handleInputChange}
-        fullWidth
-        required
-        name="name"
-        id="name"
-        label="name"
-        type="text"
-        placeholder="Please, enter your name"
-        variant="filled"
-      />
+    <form onSubmit={handleLoginForm}>
       <TextField
         onChange={handleInputChange}
         fullWidth
@@ -64,10 +50,10 @@ const RegisterForm = () => {
         variant="filled"
       />
       <Button type="submit" variant="outlined">
-        Register
+        Log In
       </Button>
     </form>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

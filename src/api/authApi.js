@@ -13,21 +13,28 @@ const clearToken = () => {
 };
 
 export const registerUser = async body => {
-  console.log(body);
   const { data } = await instance.post('/users/signup', body);
-  console.log(data);
   setToken(data.token);
   return data;
 };
+
 export const loginUser = async body => {
   const { data } = await instance.post('/users/login', body);
   setToken(data.token);
   return data;
 };
-export const getCurrent = async () => {
-  const { data } = await instance.post('/users/current');
-  return data;
+
+export const getCurrent = async token => {
+  try {
+    setToken(token);
+    const { data } = await instance.get('/users/current');
+    return data;
+  } catch (error) {
+    clearToken();
+    throw error;
+  }
 };
+
 export const logOutUser = async () => {
   const { data } = await instance.post('/users/logout');
   clearToken();
