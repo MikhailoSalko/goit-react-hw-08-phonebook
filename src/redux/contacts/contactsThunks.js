@@ -23,7 +23,7 @@ export const addContact = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       console.log(body)
-      const { data } = instance.post('/contacts', body);
+      const { data } = await instance.post('/contacts', body);
       console.log(data)
       return data
     } catch (error) {
