@@ -1,6 +1,3 @@
-import { fetchCurrent } from 'redux/auth/authThunks';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import HomePage from 'pages/HomePage/HomePage';
 import Layout from 'components/Layout/Layout';
 import LoginPage from 'pages/LoginPage/LoginPage';
@@ -11,10 +8,6 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCurrent());
-  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

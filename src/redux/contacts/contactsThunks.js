@@ -1,14 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import instance from 'api/authApi';
+import instance, { setToken } from 'api/authApi';
 
 const BASE_URL = 'https://648987a55fa58521caafc3ac.mockapi.io/api/contacts';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    // const { auth } = getState();
+    // console.log(auth.token);
     try {
-      const data = await instance.get('/contacts');
-      console.log(data);
+      // setToken(auth.token);
+      const { data } = await instance.get('/contacts');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
