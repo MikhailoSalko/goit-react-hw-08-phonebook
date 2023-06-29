@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 Notiflix.Notify.init({ position: 'center-top' });
@@ -21,7 +21,7 @@ function ContactForm() {
   const [state, setState] = useState({
     ...initialState,
   });
-  const { name, phone } = state;
+  const { name, number } = state;
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -40,7 +40,7 @@ function ContactForm() {
     });
   };
 
-  const addNewContact = ({ name, phone }) => {
+  const addNewContact = ({ name, number }) => {
     if (checkContactExist(name)) {
       return Notify.failure(`${name} is already in your contacts`);
     }
@@ -48,7 +48,7 @@ function ContactForm() {
     dispatch(
       addContact({
         name,
-        phone,
+        number,
       })
     );
   };
@@ -76,13 +76,13 @@ function ContactForm() {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adriafn, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <StyledFomrLabel htmlFor="phone">Phone</StyledFomrLabel>
+      <StyledFomrLabel htmlFor="number">Number</StyledFomrLabel>
       <StyledFormInput
         onChange={handleInputChange}
         type="tel"
-        name="phone"
-        id="phone"
-        value={phone}
+        name="number"
+        id="number"
+        value={number}
         placeholder="Enter contact number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

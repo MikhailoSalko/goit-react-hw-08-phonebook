@@ -20,19 +20,12 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async (data, { rejectWithValue }) => {
+  async (body, { rejectWithValue }) => {
     try {
-      const response = await fetch(BASE_URL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return await response.json();
+      console.log(body)
+      const { data } = instance.post('/contacts', body);
+      console.log(data)
+      return data
     } catch (error) {
       return rejectWithValue(error.message);
     }
