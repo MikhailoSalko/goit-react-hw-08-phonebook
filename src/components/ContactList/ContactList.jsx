@@ -10,8 +10,8 @@ import { StyledList } from './StyledContactList';
 const ContactList = () => {
   const { error } = useSelector(state => state.contacts);
   const contacts = useSelector(selectContacts);
-  // console.log(error);
-  // console.log(contacts);
+  console.log(error);
+  console.log(contacts);
   // const contacts = useSelector(selectFilteredContacts);
   return (
     <>
@@ -19,8 +19,8 @@ const ContactList = () => {
         <p>You don't hame contact with this name</p>
       ) : (
         <StyledList>
-          {contacts.map(({ id, name, phone }) => (
-            <ContactItem key={id} name={name} phone={phone} id={id} />
+          {contacts.map(({ id, name, number }) => (
+            <ContactItem key={id} name={name} number={number} id={id} />
           ))}
         </StyledList>
       )}

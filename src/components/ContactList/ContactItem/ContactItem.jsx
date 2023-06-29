@@ -8,7 +8,7 @@ import {
   StyledTextWrapper,
 } from './StyledContactItem';
 
-const ContactItem = ({ id, name, phone }) => {
+const ContactItem = ({ id, name, number }) => {
   const { loading } = useSelector(state => state.contacts);
   const dispatch = useDispatch();
   const deleteContactFromList = () => dispatch(deleteContact(id));
@@ -16,7 +16,7 @@ const ContactItem = ({ id, name, phone }) => {
     <StyledItem key={id}>
       <StyledTextWrapper>
         <StyledText>{name}:</StyledText>
-        <StyledText>{phone}</StyledText>
+        <StyledText>{number}</StyledText>
       </StyledTextWrapper>
       <StyledButton
         type="button"
