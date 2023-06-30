@@ -4,6 +4,10 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {
+  StyledForm,
+  StyledInputContainer,
+} from 'components/ContactForm/ContactForm';
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
@@ -33,44 +37,52 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <TextField
-        onChange={handleInputChange}
-        fullWidth
-        required
-        name="name"
-        id="name"
-        label="name"
-        type="text"
-        placeholder="Please, enter your name"
-        variant="filled"
-      />
-      <TextField
-        onChange={handleInputChange}
-        fullWidth
-        required
-        name="email"
-        id="email"
-        label="email"
-        type="email"
-        placeholder="Please, enter your email"
-        variant="filled"
-      />
-      <TextField
-        onChange={handleInputChange}
-        fullWidth
-        required
-        name="password"
-        id="password"
-        label="password"
-        type="password"
-        placeholder="Please, enter your password"
-        variant="filled"
-      />
-      <Button type="submit" variant="outlined">
+    <StyledForm onSubmit={handleSubmitForm}>
+      <StyledInputContainer>
+        <TextField
+          margin="dense"
+          size="small"
+          onChange={handleInputChange}
+          fullWidth
+          required
+          name="name"
+          id="name"
+          label="name"
+          type="text"
+          placeholder="Please, enter your name"
+          variant="filled"
+        />
+        <TextField
+          margin="dense"
+          size="small"
+          onChange={handleInputChange}
+          fullWidth
+          required
+          name="email"
+          id="email"
+          label="email"
+          type="email"
+          placeholder="Please, enter your email"
+          variant="filled"
+        />
+        <TextField
+          margin="dense"
+          size="small"
+          onChange={handleInputChange}
+          fullWidth
+          required
+          name="password"
+          id="password"
+          label="password"
+          type="password"
+          placeholder="Please, enter your password"
+          variant="filled"
+        />
+      </StyledInputContainer>
+      <Button type="submit" variant="contained">
         Register
       </Button>
-    </form>
+    </StyledForm>
   );
 };
 

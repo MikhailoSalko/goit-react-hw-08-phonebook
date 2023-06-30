@@ -18,15 +18,14 @@ const Layout = () => {
   return (
     <StyledContainer maxWidth="md" component="div">
       <ToastContainer
-        position="top-center"
-        autoClose={3000}
+        position="bottom-center"
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
         theme="light"
       />
 
@@ -38,7 +37,9 @@ const Layout = () => {
       </StyledApp>
 
       <main>
-        <Outlet />
+        <StyledContainer>
+          <Outlet />
+        </StyledContainer>
       </main>
     </StyledContainer>
   );

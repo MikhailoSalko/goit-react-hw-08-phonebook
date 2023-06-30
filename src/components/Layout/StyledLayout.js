@@ -7,6 +7,7 @@ export const StyledContainer = styled(Container)`
 
 export const StyledApp = styled(AppBar)`
   justify-content: center;
+  margin-bottom: 20px;
 `;
 
 export const StyledToolBar = styled(Toolbar)`
