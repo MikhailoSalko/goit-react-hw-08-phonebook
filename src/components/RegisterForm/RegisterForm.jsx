@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import SendIcon from '@mui/icons-material/Send';
 import {
   StyledForm,
   StyledInputContainer,
@@ -86,7 +87,7 @@ const RegisterForm = () => {
             variant="filled"
           />
         </StyledInputContainer>
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" endIcon={<SendIcon />}>
           Register
         </Button>
       </StyledForm>

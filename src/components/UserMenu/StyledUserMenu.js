@@ -3,8 +3,7 @@ import { Button, styled } from '@mui/material';
 export const StyledButton = styled(Button)`
   background-color: #fff;
   color: blue;
-  border-radius: 10px;
-  width: 100px;
+  width: 130px;
   height: 30px;
   transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
 

@@ -8,6 +8,7 @@ import { addContact } from '../../redux/contacts/contactsThunks';
 import { StyledContactForm } from './ContactForm';
 import { toast } from 'react-toastify';
 import { Button, TextField } from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const initialState = {
   name: '',
@@ -93,7 +94,12 @@ function ContactForm() {
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
       />
-      <Button type="submit" variant="contained" disabled={loading}>
+      <Button
+        type="submit"
+        variant="contained"
+        disabled={loading}
+        endIcon={<PersonAddIcon />}
+      >
         Add contact
       </Button>
     </StyledContactForm>

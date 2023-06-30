@@ -8,6 +8,7 @@ import { selectUserEmail } from 'redux/auth/auth-selectors';
 import { logout } from 'redux/auth/authThunks';
 import { selectLoading } from 'redux/contacts/contacts-selectors';
 import { StyledButton } from './StyledUserMenu';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const UserMenu = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const UserMenu = () => {
         type="submit"
         variant="outlined"
         disabled={loading}
+        endIcon={<LogoutIcon />}
         onClick={() =>
           dispatch(logout())
             .unwrap()

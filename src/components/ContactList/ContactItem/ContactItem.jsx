@@ -4,6 +4,7 @@ import { deleteContact } from 'redux/contacts/contactsThunks';
 import { StyledItem, StyledText, StyledTextWrapper } from './StyledContactItem';
 import { selectLoading } from 'redux/contacts/contacts-selectors';
 import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactItem = ({ id, name, number }) => {
   const loading = useSelector(selectLoading);
@@ -18,6 +19,7 @@ const ContactItem = ({ id, name, number }) => {
       <Button
         type="button"
         disabled={loading}
+        startIcon={<DeleteIcon />}
         onClick={deleteContactFromList}
         variant="contained"
       >

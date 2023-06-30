@@ -7,6 +7,7 @@ import { StyledNavigation } from 'components/HomeDescription/StyledHomeDescripti
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import SendIcon from '@mui/icons-material/Send';
 import { toast } from 'react-toastify';
 import { login } from 'redux/auth/authThunks';
 
@@ -70,7 +71,7 @@ const LoginForm = () => {
             variant="filled"
           />
         </StyledInputContainer>
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" endIcon={<SendIcon />}>
           Log In
         </Button>
       </StyledForm>

@@ -28,7 +28,7 @@ const ContactsPage = () => {
   return (
     <StyledContainer>
       <StyledContactFormContainer>
-        <StyledHeader>PhoneBook</StyledHeader>
+        <StyledHeader>Add Contact</StyledHeader>
         <ContactForm />
       </StyledContactFormContainer>
       <StyledContactFormContainer>
