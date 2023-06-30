@@ -60,7 +60,7 @@ function ContactForm() {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmitForm}>
+    <StyledForm onSubmit={handleSubmitForm} autoComplete="off">
       <StyledFomrLabel htmlFor="name">Name</StyledFomrLabel>
       <StyledFormInput
         autoFocus

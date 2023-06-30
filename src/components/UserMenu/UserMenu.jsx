@@ -1,10 +1,13 @@
-import { Button } from '@mui/material';
+import { Typography } from '@mui/material';
+import { StyledAuthContainer } from 'components/AuthMenu/StyledAuthMenu';
+import { StyledNavLink } from 'components/Layout/StyledLayout';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { selectUserEmail } from 'redux/auth/auth-selectors';
 import { logout } from 'redux/auth/authThunks';
 import { selectLoading } from 'redux/contacts/contacts-selectors';
+import { StyledButton } from './StyledUserMenu';
 
 const UserMenu = () => {
   const navigate = useNavigate();
@@ -13,10 +16,10 @@ const UserMenu = () => {
   const loading = useSelector(selectLoading);
 
   return (
-    <div style={{ display: 'flex', gap: '20px' }}>
-      <NavLink to="/contacts">Contacts</NavLink>
-      <p>{email}</p>
-      <Button
+    <StyledAuthContainer>
+      <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+      <Typography>{email}</Typography>
+      <StyledButton
         type="submit"
         variant="outlined"
         disabled={loading}
@@ -27,8 +30,8 @@ const UserMenu = () => {
         }
       >
         Log Out
-      </Button>
-    </div>
+      </StyledButton>
+    </StyledAuthContainer>
   );
 };
 

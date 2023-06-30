@@ -1,12 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { StyledAuthContainer } from './StyledAuthMenu';
+import { StyledNavLink } from 'components/Layout/StyledLayout';
 
 const AuthMenu = () => {
   return (
-    <>
-      <NavLink to="/register">Registration</NavLink>
-      <NavLink to="/login">Login</NavLink>
-    </>
+    <StyledAuthContainer>
+      <StyledNavLink to="/register">Registration</StyledNavLink>
+      <StyledNavLink to="/login">Login</StyledNavLink>
+    </StyledAuthContainer>
   );
 };
 
