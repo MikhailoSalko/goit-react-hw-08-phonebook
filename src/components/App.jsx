@@ -7,11 +7,6 @@ import Layout from 'components/Layout/Layout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-// import HomePage from 'pages/HomePage/HomePage';
-// import RegisterPage from 'pages/RegisterPage/RegisterPage';
-// import LoginPage from 'pages/LoginPage/LoginPage';
-// import ContactsPage from 'pages/ContactsPage/ContactsPage';
-
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -26,7 +21,7 @@ function App() {
   }, [dispatch]);
 
   return isFetching ? (
-    <p>Loading</p>
+    <h1>Loading page</h1>
   ) : (
     <Suspense fallback={<p>Loading</p>}>
       <Routes>

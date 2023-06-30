@@ -2,6 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { login } from 'redux/auth/authThunks';
 
 const LoginForm = () => {
@@ -21,7 +22,10 @@ const LoginForm = () => {
     e.preventDefault();
     dispatch(login({ email, password }))
       .unwrap()
-      .then(() => navigate('/contacts'));
+      .then(data => {
+        navigate('/contacts');
+        toast.success(`Welcome, ${data.user.name}!`);
+      });
     e.target.reset();
   };
 

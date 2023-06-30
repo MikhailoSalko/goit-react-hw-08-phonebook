@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
@@ -24,7 +25,10 @@ const RegisterForm = () => {
     e.preventDefault();
     dispatch(register({ name, email, password }))
       .unwrap()
-      .then(() => navigate('/contacts'));
+      .then(data => {
+        navigate('/contacts');
+        toast(`You registered as ${data.user.name}`);
+      });
     e.target.reset();
   };
 

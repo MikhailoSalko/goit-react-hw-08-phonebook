@@ -9,25 +9,26 @@ const authSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(register.fulfilled, (state, { payload }) => {
-        state.loading = false;
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
+        state.loading = false;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
-        state.loading = false;
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
+        state.loading = false;
       })
       .addCase(fetchCurrent.pending, state => {
         state.isFetching = true;
       })
       .addCase(fetchCurrent.fulfilled, (state, { payload }) => {
         state.user = payload;
-        state.loading = false;
+
         state.isLoggedIn = true;
         state.isFetching = false;
+        state.loading = false;
       })
       .addCase(logout.fulfilled, state => {
         state.user = {};

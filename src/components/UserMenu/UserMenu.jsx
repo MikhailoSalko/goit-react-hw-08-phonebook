@@ -4,11 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { selectUserEmail } from 'redux/auth/auth-selectors';
 import { logout } from 'redux/auth/authThunks';
+import { selectLoading } from 'redux/contacts/contacts-selectors';
 
 const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { email } = useSelector(selectUserEmail);
+  const loading = useSelector(selectLoading);
+
   return (
     <div style={{ display: 'flex', gap: '20px' }}>
       <NavLink to="/contacts">Contacts</NavLink>
@@ -16,6 +19,7 @@ const UserMenu = () => {
       <Button
         type="submit"
         variant="outlined"
+        disabled={loading}
         onClick={() =>
           dispatch(logout())
             .unwrap()

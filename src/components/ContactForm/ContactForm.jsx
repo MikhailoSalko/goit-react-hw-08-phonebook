@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/contacts/contacts-selectors';
-import Notiflix, { Notify } from 'notiflix';
 import { addContact } from '../../redux/contacts/contactsThunks';
 import {
   StyledFomrLabel,
@@ -9,13 +8,12 @@ import {
   StyledFormInput,
   StyledSubmitButton,
 } from './ContactForm';
+import { toast } from 'react-toastify';
 
 const initialState = {
   name: '',
   number: '',
 };
-
-Notiflix.Notify.init({ position: 'center-top' });
 
 function ContactForm() {
   const [state, setState] = useState({
@@ -42,9 +40,9 @@ function ContactForm() {
 
   const addNewContact = ({ name, number }) => {
     if (checkContactExist(name)) {
-      return Notify.failure(`${name} is already in your contacts`);
+      return toast.error(`${name} is already in your contacts`);
     }
-    Notify.success(`You add contact ${name}`);
+    toast.success(`You add contact ${name}`);
     dispatch(
       addContact({
         name,
