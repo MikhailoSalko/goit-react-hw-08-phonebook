@@ -20,10 +20,14 @@ const authSlice = createSlice({
         state.token = payload.token;
         state.isLoggedIn = true;
       })
+      .addCase(fetchCurrent.pending, state => {
+        state.isFetching = true;
+      })
       .addCase(fetchCurrent.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.loading = false;
         state.isLoggedIn = true;
+        state.isFetching = false;
       })
       .addCase(logout.fulfilled, state => {
         state.user = {};

@@ -2,17 +2,15 @@ import PropTypes from 'prop-types';
 import ContactItem from './ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import {
+  selectError,
   selectFilteredContacts,
 } from 'redux/contacts/contacts-selectors';
 import { StyledList } from './StyledContactList';
 
 const ContactList = () => {
-  const { error } = useSelector(state => state.contacts);
-  // const contacts = useSelector(selectContacts);
-
+  const error = useSelector(selectError);
   const contacts = useSelector(selectFilteredContacts);
-  console.log(error);
-  console.log(contacts);
+
   return (
     <>
       {contacts.length === 0 && !error ? (

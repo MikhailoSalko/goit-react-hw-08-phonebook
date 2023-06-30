@@ -7,9 +7,10 @@ import {
   StyledText,
   StyledTextWrapper,
 } from './StyledContactItem';
+import { selectLoading } from 'redux/contacts/contacts-selectors';
 
 const ContactItem = ({ id, name, number }) => {
-  const { loading } = useSelector(state => state.contacts);
+  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
   const deleteContactFromList = () => dispatch(deleteContact(id));
   return (

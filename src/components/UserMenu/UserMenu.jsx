@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { selectUserEmail } from 'redux/auth/auth-selectors';
 import { logout } from 'redux/auth/authThunks';
 
@@ -9,9 +9,9 @@ const UserMenu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { email } = useSelector(selectUserEmail);
-  console.log(email);
   return (
     <div style={{ display: 'flex', gap: '20px' }}>
+      <NavLink to="/contacts">Contacts</NavLink>
       <p>{email}</p>
       <Button
         type="submit"
