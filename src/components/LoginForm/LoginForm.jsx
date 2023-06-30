@@ -1,8 +1,9 @@
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import {
   StyledForm,
   StyledInputContainer,
 } from 'components/ContactForm/ContactForm';
+import { StyledNavigation } from 'components/HomeDescription/StyledHomeDescription';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -34,39 +35,46 @@ const LoginForm = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleLoginForm}>
-      <StyledInputContainer>
-        <TextField
-          margin="dense"
-          size="small"
-          onChange={handleInputChange}
-          fullWidth
-          required
-          name="email"
-          id="email"
-          label="email"
-          type="email"
-          placeholder="Please, enter your email"
-          variant="filled"
-        />
-        <TextField
-          margin="dense"
-          size="small"
-          onChange={handleInputChange}
-          fullWidth
-          required
-          name="password"
-          id="password"
-          label="password"
-          type="password"
-          placeholder="Please, enter your password"
-          variant="filled"
-        />
-      </StyledInputContainer>
-      <Button type="submit" variant="contained">
-        Log In
-      </Button>
-    </StyledForm>
+    <>
+      <Typography variant="h6">
+        Please, enter your email and password to sign in. If you don't have an
+        account, please{' '}
+        <StyledNavigation to="/register">sign up.</StyledNavigation>
+      </Typography>
+      <StyledForm onSubmit={handleLoginForm}>
+        <StyledInputContainer>
+          <TextField
+            margin="dense"
+            size="normal"
+            onChange={handleInputChange}
+            fullWidth
+            required
+            name="email"
+            id="email"
+            label="email"
+            type="email"
+            placeholder="Please, enter your email"
+            variant="filled"
+          />
+          <TextField
+            margin="dense"
+            size="normal"
+            onChange={handleInputChange}
+            fullWidth
+            required
+            name="password"
+            id="password"
+            label="password"
+            type="password"
+            placeholder="Please, enter your password"
+            variant="filled"
+          />
+        </StyledInputContainer>
+        <Button type="submit" variant="contained">
+          Log In
+        </Button>
+      </StyledForm>
+    </>
   );
 };
 

@@ -7,11 +7,13 @@ import { fetchContacts } from 'redux/contacts/contactsThunks.js';
 import Loader from '../../components/Loader/Loader.jsx';
 import {
   StyledHeader,
-  StyledPhoneBookContainer,
-  StyledSectionContainer,
   StyledTextNoContacts,
 } from '../../components/StyledApp.js';
 import { Report } from 'notiflix';
+import {
+  StyledContactFormContainer,
+  StyledContainer,
+} from './StyledContactPage.js';
 
 const ContactsPage = () => {
   const {
@@ -24,24 +26,26 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <StyledPhoneBookContainer>
-      <StyledSectionContainer>
+    <StyledContainer>
+      <StyledContactFormContainer>
         <StyledHeader>PhoneBook</StyledHeader>
         <ContactForm />
+      </StyledContactFormContainer>
+      <StyledContactFormContainer>
         <StyledHeader>Contacts</StyledHeader>
         <Filter />
-      </StyledSectionContainer>
-      {error && Report.failure(error)}
-      {loading && contacts.length === 0 ? (
-        <Loader />
-      ) : contacts.length === 0 && !error ? (
-        <StyledTextNoContacts>
-          There are no contacts in your phonebook
-        </StyledTextNoContacts>
-      ) : (
-        <ContactList />
-      )}
-    </StyledPhoneBookContainer>
+        {error && Report.failure(error)}
+        {loading && contacts.length === 0 ? (
+          <Loader />
+        ) : contacts.length === 0 && !error ? (
+          <StyledTextNoContacts>
+            There are no contacts in your phonebook
+          </StyledTextNoContacts>
+        ) : (
+          <ContactList />
+        )}
+      </StyledContactFormContainer>
+    </StyledContainer>
   );
 };
 

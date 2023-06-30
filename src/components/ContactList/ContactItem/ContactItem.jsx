@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contactsThunks';
-import {
-  StyledButton,
-  StyledItem,
-  StyledText,
-  StyledTextWrapper,
-} from './StyledContactItem';
+import { StyledItem, StyledText, StyledTextWrapper } from './StyledContactItem';
 import { selectLoading } from 'redux/contacts/contacts-selectors';
+import { Button } from '@mui/material';
 
 const ContactItem = ({ id, name, number }) => {
   const loading = useSelector(selectLoading);
@@ -19,13 +15,14 @@ const ContactItem = ({ id, name, number }) => {
         <StyledText>{name}:</StyledText>
         <StyledText>{number}</StyledText>
       </StyledTextWrapper>
-      <StyledButton
+      <Button
         type="button"
         disabled={loading}
         onClick={deleteContactFromList}
+        variant="contained"
       >
         Delete
-      </StyledButton>
+      </Button>
     </StyledItem>
   );
 };

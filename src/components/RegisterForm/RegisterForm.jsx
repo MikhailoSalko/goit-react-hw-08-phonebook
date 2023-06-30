@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunks';
@@ -8,6 +8,7 @@ import {
   StyledForm,
   StyledInputContainer,
 } from 'components/ContactForm/ContactForm';
+import { StyledNavigation } from 'components/HomeDescription/StyledHomeDescription';
 
 const RegisterForm = () => {
   const [name, setName] = useState('');
@@ -37,52 +38,59 @@ const RegisterForm = () => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmitForm}>
-      <StyledInputContainer>
-        <TextField
-          margin="dense"
-          size="small"
-          onChange={handleInputChange}
-          fullWidth
-          required
-          name="name"
-          id="name"
-          label="name"
-          type="text"
-          placeholder="Please, enter your name"
-          variant="filled"
-        />
-        <TextField
-          margin="dense"
-          size="small"
-          onChange={handleInputChange}
-          fullWidth
-          required
-          name="email"
-          id="email"
-          label="email"
-          type="email"
-          placeholder="Please, enter your email"
-          variant="filled"
-        />
-        <TextField
-          margin="dense"
-          size="small"
-          onChange={handleInputChange}
-          fullWidth
-          required
-          name="password"
-          id="password"
-          label="password"
-          type="password"
-          placeholder="Please, enter your password"
-          variant="filled"
-        />
-      </StyledInputContainer>
-      <Button type="submit" variant="contained">
-        Register
-      </Button>
-    </StyledForm>
+    <>
+      <Typography variant="h6">
+        If you already have an account, please{' '}
+        <StyledNavigation to="/login">login</StyledNavigation>
+      </Typography>
+
+      <StyledForm onSubmit={handleSubmitForm}>
+        <StyledInputContainer>
+          <TextField
+            margin="dense"
+            size="normal"
+            onChange={handleInputChange}
+            fullWidth
+            required
+            name="name"
+            id="name"
+            label="name"
+            type="text"
+            placeholder="Please, enter your name"
+            variant="filled"
+          />
+          <TextField
+            margin="dense"
+            size="normal"
+            onChange={handleInputChange}
+            fullWidth
+            required
+            name="email"
+            id="email"
+            label="email"
+            type="email"
+            placeholder="Please, enter your email"
+            variant="filled"
+          />
+          <TextField
+            margin="dense"
+            size="normal"
+            onChange={handleInputChange}
+            fullWidth
+            required
+            name="password"
+            id="password"
+            label="password"
+            type="password"
+            placeholder="Please, enter your password"
+            variant="filled"
+          />
+        </StyledInputContainer>
+        <Button type="submit" variant="contained">
+          Register
+        </Button>
+      </StyledForm>
+    </>
   );
 };
 
